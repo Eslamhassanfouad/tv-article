@@ -1,49 +1,60 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const wheel = document.querySelector(".wheel-container");
-  const spinButton = document.getElementById("spin");
-  const resultDiv = document.getElementById("result");
-  const sectors = [
-    { percent: "0%", degrees: 0, className: "one" },
-    { percent: "80%", degrees: 45, className: "two" },
-    { percent: "70%", degrees: 90, className: "three" },
-    { percent: "60%", degrees: 135, className: "four" },
-    { percent: "50%", degrees: 180, className: "five" },
-    { percent: "40%", degrees: 225, className: "six" },
-    { percent: "30%", degrees: 270, className: "seven" },
-    { percent: "20%", degrees: 315, className: "eight" },
-  ];
+"use strict";
 
-  spinButton.addEventListener("click", () => {
-    // Disable the button permanently after the first click
-    spinButton.disabled = true;
-    resultDiv.textContent = "";
+const button = document.getElementById("button-8779cb0a");
+const spinnerOverlay = document.getElementById("spinner-overlay");
+const spinnerImage = document.querySelector(".spinner-image");
+const spinBtn = document.querySelector(".spin-btn");
+const arrow = document.querySelector(".arrow");
+const message = document.getElementById("message");
 
-    // Select a random sector
-    const randomIndex = Math.floor(Math.random() * sectors.length);
-    const selectedSector = sectors[randomIndex];
-    const rotation = 360 * 5 + selectedSector.degrees;
-
-    // Rotate the wheel
-    wheel.style.transform = `rotate(${rotation}deg)`;
-    wheel.style.transition = "transform 5s ease-out";
-
-    // Display the result after the rotation ends
-    setTimeout(() => {
-      resultDiv.textContent = `Congratulations! You got ${selectedSector.percent} discount!`;
-      // Do not re-enable the spin button
-    }, 5000);
-  });
+button.addEventListener("click", () => {
+  spinnerOverlay.style.display = "flex";
 });
 
-// let container = document.querySelector(".wheel-container");
-// let btn = document.getElementById("spin");
-// let number = Math.ceil(Math.random() * 1000);
+let first = true;
+spinBtn.addEventListener("click", function () {
+  if (first) {
+    spinBtn.style.display = "none";
+    spinnerImage.style.transform = `rotate(880deg)`;
 
-// let clicks = 0;
-// btn.onclick = function () {
-//   clicks += 1;
-//   if (clicks == 1) {
-//     container.style.transform = "rotate(" + number + "deg)";
-//     number += Math.ceil(Math.random() * 1000);
-//   }
-// };
+    // Reset button display state after rotation
+    spinnerImage.addEventListener(
+      "transitionend",
+      function handleTransitionEnd() {
+        // Remove event listener to avoid multiple triggers
+        spinnerImage.removeEventListener("transitionend", handleTransitionEnd);
+
+        // Only show button again after 880deg rotation is finished
+        if (spinnerImage.style.transform === "rotate(880deg)") {
+          spinBtn.style.display = "block";
+        }
+
+        // Start the second rotation if needed
+        spinBtn.addEventListener("click", function () {
+          if (!first) {
+            spinnerImage.style.transform = `rotate(1465deg)`;
+            spinnerImage.addEventListener(
+              "transitionend",
+              function handleSecondTransitionEnd() {
+                // Remove event listener to avoid multiple triggers
+                spinnerImage.removeEventListener(
+                  "transitionend",
+                  handleSecondTransitionEnd
+                );
+
+                setTimeout(() => {
+                  message.style.display = "block";
+                  spinnerImage.style.display = "none";
+                  spinBtn.style.display = "none";
+                  arrow.style.display = "none";
+                }, 1000);
+              }
+            );
+          }
+        });
+
+        first = false;
+      }
+    );
+  }
+});

@@ -1,101 +1,114 @@
-.wheel-container {
-  width: 300px;
-  height: 300px;
-  background: white;
-  border-radius: 50%;
-  border: 10px solid #dde;
+/* Spinner Overlay Styles */
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it covers other content */
+  backdrop-filter: blur(5px); /* Blur the background */
+}
+
+/* Spinner UI Styles */
+.spinner-ui {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  background: transparent; /* Background for the spinner UI */
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners */
   position: relative;
-  overflow: hidden;
-}
-.sc-cNQqM.jkFRgx {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  transition: transform 0.5s ease; /* Adjust duration and easing as needed */
 }
 
-.wheel-container div {
-  height: 50%;
-  width: 146px; /* Reduced width */
+.spinner-image {
+  width: 478px;
+  height: 478px;
+  transition: transform 5s ease; /* Adjust duration and easing as needed */
+}
+
+.spin-btn-div {
   position: absolute;
-  clip-path: polygon(100% 0, 50% 100%, 0 0);
-  transform: translateX(-50%);
-  transform-origin: bottom;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px; /* Reduced font size */
-  font-weight: bold;
-  font-family: sans-serif;
-  color: #fff;
-  left: 67px; /* Adjusted positioning */
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(223px, 223px);
+}
+.spin-btn {
+  width: 70px;
 }
 
-.wheel-container .one {
-  background-color: #3f51b5;
-  left: 50%;
-}
-.wheel-container .two {
-  background-color: #ff9800;
-  transform: rotate(45deg);
-}
-.wheel-container .three {
-  background-color: #e91e63;
-  transform: rotate(90deg);
-}
-.wheel-container .four {
-  background-color: #4caf50;
-  transform: rotate(135deg);
-}
-.wheel-container .five {
-  background-color: #009688;
-  transform: rotate(180deg);
-}
-.wheel-container .six {
-  background-color: #795548;
-  transform: rotate(225deg);
-}
-.wheel-container .seven {
-  background-color: #9c27b0;
-  transform: rotate(270deg);
-}
-.wheel-container .eight {
-  background-color: #f44336;
-  transform: rotate(315deg);
+.arrow-div {
+  position: absolute;
+  z-index: 10;
 }
 
 .arrow {
-  position: absolute;
-  top: -7%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: gold;
-  z-index: 20;
+  width: 46px;
 }
 
-.arrow::before {
-  content: "\1F817";
-  font-size: 60px;
+/* Optional: Centering the spinner UI on the page */
+.spinner-ui {
+  text-align: center;
 }
 
-#spin {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  background-color: #e2e2e2;
-  text-transform: uppercase;
-  border: 8px solid #fff;
+@media (max-width: 777px) {
+  .spinner-image {
+    width: 350px;
+    height: 350px;
+    position: relative;
+  }
+  .arrow {
+    width: 37px;
+  }
+  .spin-btn {
+    width: 50px;
+  }
+  .spin-btn-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(340%, 318%);
+  }
+}
+
+#message {
+  background-color: white;
+  width: 350px;
+  height: 200px;
+  text-align: center;
+  margin-top: 20px;
+  display: none;
+  border-radius: 12px;
+  border: 1px solid rgb(29 186 51);
+  padding: 20px;
+}
+
+#message h3 {
+  color: rgb(29 186 51);
+  font-size: 26px;
+  margin-bottom: 5px;
   font-weight: bold;
-  font-size: 20px;
-  color: #a2a2a2;
-  width: 80px;
-  height: 80px;
-  font-family: sans-serif;
-  border-radius: 50%;
-  cursor: pointer;
-  outline: none;
-  letter-spacing: 1px;
+}
+#message h6 {
+  color: black;
+  font-size: 18px !important;
+  margin-bottom: 5px;
+}
+
+.jackpot-link {
+  background-color: rgb(29 186 51);
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 22px;
+  color: white;
+  margin-top: 20px;
+}
+.jackpot-link a {
+  font-size: 22px;
+  color: white;
 }
