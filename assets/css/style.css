@@ -1,0 +1,101 @@
+.wheel-container {
+  width: 300px;
+  height: 300px;
+  background: white;
+  border-radius: 50%;
+  border: 10px solid #dde;
+  position: relative;
+  overflow: hidden;
+}
+.sc-cNQqM.jkFRgx {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wheel-container div {
+  height: 50%;
+  width: 146px; /* Reduced width */
+  position: absolute;
+  clip-path: polygon(100% 0, 50% 100%, 0 0);
+  transform: translateX(-50%);
+  transform-origin: bottom;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px; /* Reduced font size */
+  font-weight: bold;
+  font-family: sans-serif;
+  color: #fff;
+  left: 67px; /* Adjusted positioning */
+}
+
+.wheel-container .one {
+  background-color: #3f51b5;
+  left: 50%;
+}
+.wheel-container .two {
+  background-color: #ff9800;
+  transform: rotate(45deg);
+}
+.wheel-container .three {
+  background-color: #e91e63;
+  transform: rotate(90deg);
+}
+.wheel-container .four {
+  background-color: #4caf50;
+  transform: rotate(135deg);
+}
+.wheel-container .five {
+  background-color: #009688;
+  transform: rotate(180deg);
+}
+.wheel-container .six {
+  background-color: #795548;
+  transform: rotate(225deg);
+}
+.wheel-container .seven {
+  background-color: #9c27b0;
+  transform: rotate(270deg);
+}
+.wheel-container .eight {
+  background-color: #f44336;
+  transform: rotate(315deg);
+}
+
+.arrow {
+  position: absolute;
+  top: -7%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: gold;
+  z-index: 20;
+}
+
+.arrow::before {
+  content: "\1F817";
+  font-size: 60px;
+}
+
+#spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: #e2e2e2;
+  text-transform: uppercase;
+  border: 8px solid #fff;
+  font-weight: bold;
+  font-size: 20px;
+  color: #a2a2a2;
+  width: 80px;
+  height: 80px;
+  font-family: sans-serif;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: 1px;
+}
